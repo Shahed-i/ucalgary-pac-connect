@@ -39,32 +39,32 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-up delay-300">
-            <Button asChild variant="hero" size="xl">
+            <Button asChild variant="hero" size="xl" className="btn-press hover:scale-105 transition-all">
               <Link to="/join" className="group">
                 Join Our Movement
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button asChild variant="heroOutline" size="xl">
+            <Button asChild variant="heroOutline" size="xl" className="btn-press hover:scale-105 transition-all">
               <Link to="/events">Upcoming Events</Link>
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto animate-fade-up delay-400">
-            <div className="text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover-lift">
-              <Users className="w-6 h-6 text-primary mx-auto mb-2" />
-              <div className="font-display text-2xl md:text-3xl font-bold text-foreground">500+</div>
+          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-2xl mx-auto animate-fade-up delay-400 stagger-children">
+            <div className="group text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover-lift hover:border-primary/30 transition-all">
+              <Users className="w-6 h-6 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <div className="font-display text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors">500+</div>
               <div className="text-sm text-muted-foreground">Members</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover-lift">
-              <Calendar className="w-6 h-6 text-primary mx-auto mb-2" />
-              <div className="font-display text-2xl md:text-3xl font-bold text-foreground">50+</div>
+            <div className="group text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover-lift hover:border-primary/30 transition-all">
+              <Calendar className="w-6 h-6 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <div className="font-display text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors">50+</div>
               <div className="text-sm text-muted-foreground">Events</div>
             </div>
-            <div className="text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover-lift">
-              <BookOpen className="w-6 h-6 text-primary mx-auto mb-2" />
-              <div className="font-display text-2xl md:text-3xl font-bold text-foreground">20+</div>
+            <div className="group text-center p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover-lift hover:border-primary/30 transition-all">
+              <BookOpen className="w-6 h-6 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+              <div className="font-display text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors">20+</div>
               <div className="text-sm text-muted-foreground">Workshops</div>
             </div>
           </div>

@@ -8,8 +8,8 @@ export function AboutSection() {
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 hover:scale-105 transition-transform cursor-default">
             Who We Are
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -23,13 +23,13 @@ export function AboutSection() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto stagger-children">
           {/* Vision */}
-          <div className="group bg-card rounded-2xl p-8 shadow-sm border border-border/50 hover-lift">
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+          <div className="group bg-card rounded-2xl p-8 shadow-sm border border-border/50 hover-lift hover:border-primary/30">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
               <Eye className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
             </div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
               Our Vision
             </h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -39,11 +39,11 @@ export function AboutSection() {
           </div>
 
           {/* Mission */}
-          <div className="group bg-card rounded-2xl p-8 shadow-sm border border-border/50 hover-lift">
-            <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
+          <div className="group bg-card rounded-2xl p-8 shadow-sm border border-border/50 hover-lift hover:border-accent/30">
+            <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3">
               <Target className="w-7 h-7 text-accent group-hover:text-accent-foreground transition-colors" />
             </div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors">
               Our Mission
             </h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -53,11 +53,11 @@ export function AboutSection() {
           </div>
 
           {/* Values */}
-          <div className="group bg-card rounded-2xl p-8 shadow-sm border border-border/50 hover-lift">
-            <div className="w-14 h-14 rounded-xl bg-olive/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+          <div className="group bg-card rounded-2xl p-8 shadow-sm border border-border/50 hover-lift hover:border-primary/30">
+            <div className="w-14 h-14 rounded-xl bg-olive/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
               <Users className="w-7 h-7 text-olive group-hover:text-primary-foreground transition-colors" />
             </div>
-            <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+            <h3 className="font-display text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
               Our Values
             </h3>
             <p className="text-muted-foreground leading-relaxed">

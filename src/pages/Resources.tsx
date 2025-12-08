@@ -72,7 +72,7 @@ export default function Resources() {
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-hero tatreez-pattern">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl">
+          <div>
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               Resources
             </span>
@@ -117,7 +117,7 @@ export default function Resources() {
 
             {/* History Tab */}
             <TabsContent value="history" className="mt-8" id="history">
-              <div className="grid gap-4 max-w-4xl">
+              <div className="grid gap-4">
                 {historyContent.map((item, index) => (
                   <div
                     key={index}
@@ -150,7 +150,7 @@ export default function Resources() {
 
             {/* Current Tab */}
             <TabsContent value="current" className="mt-8" id="current">
-              <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+              <div className="grid md:grid-cols-2 gap-6">
                 {currentContent.map((item, index) => (
                   <div
                     key={index}
@@ -165,7 +165,7 @@ export default function Resources() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8 p-6 bg-accent/5 rounded-xl border border-accent/20 max-w-5xl">
+              <div className="mt-8 p-6 bg-accent/5 rounded-xl border border-accent/20">
                 <p className="text-sm text-muted-foreground">
                   <strong className="text-foreground">Note:</strong> The situation in Palestine is 
                   constantly evolving. For the most current information, we recommend following 
@@ -176,7 +176,7 @@ export default function Resources() {
 
             {/* Timeline Tab */}
             <TabsContent value="timeline" className="mt-8" id="timeline">
-              <div className="max-w-4xl">
+              <div>
                 <div className="relative">
                   {/* Timeline line */}
                   <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary" />
