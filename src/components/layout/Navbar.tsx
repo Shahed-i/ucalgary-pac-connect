@@ -71,20 +71,17 @@ export function Navbar() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border/50"
-          : "bg-transparent"
-      )}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md shadow-sm border-b border-border/50"
     >
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-lg group-hover:scale-105 transition-transform">
-              PAC
-            </div>
+            <img 
+              src="/images/logo.png" 
+              alt="PAC Logo" 
+              className="w-12 h-13 rounded-full object-cover group-hover:scale-105 transition-transform"
+            />
             <div className="hidden sm:block">
               <span className="font-display text-lg font-semibold text-foreground">
                 Palestine Advocacy Club

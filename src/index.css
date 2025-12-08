@@ -17,7 +17,8 @@
     --popover-foreground: 0 0% 8%;
 
     /* Palestinian Green */
-    --primary: 152 100% 24%;
+    //--primary: 152 100% 24%;
+    --primary: 154, 100%, 13%;
     --primary-foreground: 0 0% 100%;
 
     /* Light olive green */

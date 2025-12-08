@@ -5,47 +5,34 @@ import { ArrowRight, Users, Calendar, BookOpen } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 tatreez-pattern opacity-50" />
+      {/* Full-page Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-35"
+        style={{
+          backgroundImage: 'url("/images/IMG_1998.jpg")',
+        }}
+      />
       
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-secondary/30" />
-
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float delay-300" />
-
-      {/* Palestinian Flag Colors - Decorative Stripes */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 md:w-2">
-        <div className="h-1/4 bg-foreground" />
-        <div className="h-1/4 bg-primary" />
-        <div className="h-1/4 bg-background" />
-        <div className="h-1/4 bg-accent" />
-      </div>
+      {/* Overlay to apply opacity and darken the image */}
+      <div className="absolute inset-0 bg-black opacity-40" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            University of Calgary Student Club
-          </div>
-
           {/* Main Heading */}
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6 animate-fade-up delay-100">
             Advocating for{" "}
-            <span className="text-primary relative">
+            <span className="text-primary relative ">
               Palestine
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
                 <path d="M0 4C50 0 150 8 200 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-accent/50" />
               </svg>
             </span>{" "}
             <br className="hidden sm:block" />
-            With Unity & Purpose
+            <span className="inline-block pt-4">With Unity & Purpose</span>
           </h1>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up delay-200">
+          <p className="text-lg md:text-xl text-primary font-bold max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up delay-200">
             Join us in our mission to educate, raise awareness, and stand in solidarity 
             with the Palestinian people through peaceful advocacy and community engagement.
           </p>
