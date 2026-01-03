@@ -26,9 +26,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-xl">
-                PAC
-              </div>
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-700 to-emerald-700/60 flex items-center justify-center shadow-lg group-hover:shadow-emerald-700/50 transition-all group-hover:scale-110">
+              <img 
+                src="/images/logo.png" 
+                alt="PAC Logo" 
+                className="w-10 h-11 rounded-full object-cover"
+              />
+            </div>
               <div>
                 <span className="font-display text-xl font-semibold block">
                   Palestine Advocacy Club
