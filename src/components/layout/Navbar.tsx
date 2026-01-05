@@ -30,9 +30,8 @@ const navLinks: NavLink[] = [
     name: "Resources",
     path: "/resources",
     children: [
-      { name: "History", path: "/resources#history" },
-      { name: "Current Affairs", path: "/resources#current" },
       { name: "Timeline", path: "/resources#timeline" },
+      { name: "Books", path: "/resources#books" },
     ],
   },
   { name: "Statements", path: "/statements" },

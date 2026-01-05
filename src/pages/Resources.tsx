@@ -373,8 +373,20 @@ const BookCard = ({ book }) => {
   );
 };
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export default function Resources() {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("timeline");
+
+  useEffect(() => {
+    if (location.hash === "#books") {
+      setActiveTab("books");
+    } else if (location.hash === "#timeline") {
+      setActiveTab("timeline");
+    }
+  }, [location.hash]);
 
   return (
     <Layout>
