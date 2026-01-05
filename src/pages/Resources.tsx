@@ -1,216 +1,303 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Clock, Globe } from "lucide-react";
+import { BookOpen, Clock } from "lucide-react";
+import {
+  Globe,
+  ScrollText,
+  Users,
+  Flame,
+  Scale,
+  Shield,
+  Landmark,
+  AlertTriangle,
+  Map,
+  Flag,
+  Hand,
+  Lock,
+  Link,
+  Home,
+  Eye,
+  Megaphone,
+} from "lucide-react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
-const currentContent = [
-  {
-    title: "Ongoing Occupation",
-    content:
-      "The Israeli military occupation of the West Bank continues, with over 700,000 Israeli settlers living in settlements considered illegal under international law.",
-  },
-  {
-    title: "Gaza Situation",
-    content:
-      "Gaza remains under blockade, severely restricting movement of people and goods and creating an ongoing humanitarian crisis.",
-  },
-  {
-    title: "International Response",
-    content:
-      "Global responses vary, with calls for accountability, ceasefires, and political solutions grounded in international law.",
-  },
-  {
-    title: "Human Rights Concerns",
-    content:
-      "Human rights organizations document systemic violations impacting daily Palestinian life, freedom of movement, and access to basic needs.",
-  },
-];
+/* -------------------------
+   Palestinian Symbol Icons
+--------------------------*/
+
+const OliveBranchIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+    <path d="M12 2c-3 5-4 9-4 13 0 3 2 5 4 5s4-2 4-5c0-4-1-8-4-13z" />
+  </svg>
+);
+
+const KeyIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+    <path d="M7 14a5 5 0 1 1 4-8l9 9-2 2-2-2-2 2-2-2-1 1H7z" />
+  </svg>
+);
+
+const StoneIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+    <circle cx="12" cy="12" r="6" />
+  </svg>
+);
+
+const DomeIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+    <path d="M12 3c-5 2-8 6-8 10v6h16v-6c0-4-3-8-8-10z" />
+  </svg>
+);
+
+/* -------------------------
+   Timeline Events
+--------------------------*/
 
 const timelineEvents = [
   {
     year: "1917",
     title: "Balfour Declaration",
+    icon: ScrollText,
     description:
-      "Britain announces support for establishing a Jewish homeland in Palestine without consulting its Indigenous population.",
+      "Britain issues the Balfour Declaration, promising a “Jewish national home” in Palestine without consulting its Indigenous population.",
+  },
+  {
+    year: "1922",
+    title: "British Mandate for Palestine",
+    icon: Globe,
+    description:
+      "The League of Nations grants Britain control over Palestine, formally disregarding Palestinian political rights.",
+  },
+  {
+    year: "1929–1939",
+    title: "Mass Jewish Immigration",
+    icon: Users,
+    description:
+      "Due to rising fascism in Europe, large-scale Jewish immigration reshapes Palestine’s demographics under British rule.",
   },
   {
     year: "1947",
     title: "UN Partition Plan",
+    icon: Map,
     description:
-      "The UN proposes partitioning Palestine, allocating the majority of land to a newly proposed Jewish state.",
+      "The UN proposes dividing Palestine into two states, allocating the majority of land to a minority settler population.",
   },
   {
     year: "1948",
     title: "The Nakba",
+    icon: KeyIcon,
     description:
-      "Over 700,000 Palestinians are forcibly displaced following the establishment of Israel.",
+      "Over 750,000 Palestinians are expelled from their homes and more than 600 villages are destroyed during Israel’s creation.",
+  },
+  {
+    year: "1950",
+    title: "Capital Moved to West Jerusalem",
+    icon: Landmark,
+    description:
+      "Israel declares West Jerusalem its capital in defiance of UN resolutions, while the West Bank falls under Jordanian rule.",
+  },
+  {
+    year: "1952",
+    title: "Israeli Nationality Law",
+    icon: Lock,
+    description:
+      "Laws are enacted preventing Palestinian refugees from returning while restricting citizenship rights for Palestinians.",
+  },
+  {
+    year: "1956",
+    title: "Village Massacres",
+    icon: AlertTriangle,
+    description:
+      "Israeli military attacks target Palestinian towns including Qalqilya, Kafr Qasim, and Khan Younis.",
+  },
+  {
+    year: "1960",
+    title: "Land Administration Laws",
+    icon: Scale,
+    description:
+      "State land is reserved almost exclusively for Jewish ownership, institutionalizing land dispossession.",
+  },
+  {
+    year: "1964",
+    title: "PLO Established",
+    icon: Flag,
+    description:
+      "The Palestine Liberation Organization forms to demand self-determination and represent Palestinians globally.",
   },
   {
     year: "1967",
-    title: "Six-Day War",
+    title: "The Naksa",
+    icon: Shield,
     description:
-      "Israel occupies the West Bank, Gaza Strip, East Jerusalem, Sinai Peninsula, and Golan Heights.",
+      "Israel occupies the West Bank, Gaza, East Jerusalem, Golan Heights, and Sinai Peninsula.",
+  },
+  {
+    year: "1967",
+    title: "UN Resolution 242",
+    icon: ScrollText,
+    description:
+      "The UN calls for Israeli withdrawal from occupied territories, affirming land-for-peace principles.",
+  },
+  {
+    year: "1974",
+    title: "Palestinian Rights Recognized",
+    icon: OliveBranchIcon,
+    description:
+      "The UN affirms Palestinian rights to self-determination and recognizes the PLO as their legitimate representative.",
+  },
+  {
+    year: "1982",
+    title: "Sabra & Shatila Massacres",
+    icon: Flame,
+    description:
+      "Over 1,500 Palestinian and Lebanese civilians are killed in refugee camps during Israel’s invasion of Lebanon.",
   },
   {
     year: "1987",
     title: "First Intifada",
+    icon: StoneIcon,
     description:
-      "A grassroots Palestinian uprising emerges in response to military occupation.",
+      "A mass civil uprising erupts across Gaza and the West Bank against military occupation.",
+  },
+  {
+    year: "1988",
+    title: "PLO Recognizes Israel",
+    icon: Hand,
+    description:
+      "The PLO accepts UN resolutions and recognizes Israel in pursuit of a political settlement.",
   },
   {
     year: "1993",
-    title: "Oslo Accords",
+    title: "Oslo Accords I",
+    icon: Link,
     description:
-      "Agreements establish the Palestinian Authority while deferring core political issues.",
+      "Israel and the PLO sign interim agreements while deferring core issues like refugees and borders.",
   },
   {
-    year: "2007",
-    title: "Gaza Blockade",
+    year: "1995",
+    title: "Oslo Accords II",
+    icon: Map,
     description:
-      "A land, air, and sea blockade is imposed on Gaza, intensifying humanitarian conditions.",
+      "The West Bank is fragmented into Areas A, B, and C, severely limiting Palestinian autonomy.",
+  },
+  {
+    year: "2000",
+    title: "Second Intifada",
+    icon: Flame,
+    description:
+      "A second uprising emerges amid continued occupation, settlement growth, and political failure.",
+  },
+  {
+    year: "2002",
+    title: "West Bank Reoccupation",
+    icon: Shield,
+    description:
+      "Israeli forces reoccupy major Palestinian cities and expand checkpoints and military control.",
+  },
+  {
+    year: "2005",
+    title: "Gaza Siege",
+    icon: Lock,
+    description:
+      "Israel withdraws settlers from Gaza while imposing a land, air, and sea blockade.",
+  },
+  {
+    year: "2006",
+    title: "Hamas Electoral Victory",
+    icon: Megaphone,
+    description:
+      "Hamas wins democratic elections in Gaza, followed by sanctions and international isolation.",
+  },
+  {
+    year: "2008",
+    title: "Assault on Gaza",
+    icon: Flame,
+    description:
+      "A 22-day military assault devastates Gaza, killing hundreds and destroying infrastructure.",
+  },
+  {
+    year: "2012",
+    title: "Pillar of Defense",
+    icon: Eye,
+    description:
+      "Israel launches an eight-day military operation on Gaza with widespread civilian impact.",
+  },
+  {
+    year: "2018",
+    title: "Great March of Return",
+    icon: KeyIcon,
+    description:
+      "Weekly peaceful protests in Gaza demand the right of return and an end to the blockade.",
   },
   {
     year: "2023–Present",
-    title: "Ongoing Crisis",
+    title: "Ongoing Genocide & Regional Escalation",
+    icon: AlertTriangle,
     description:
-      "Escalating violence and humanitarian devastation continue across Gaza and the West Bank.",
+      "A prolonged military campaign devastates Gaza and the West Bank, with spillover into Lebanon, Syria, Yemen, and beyond.",
   },
 ];
 
-const bookRecommendations = [
-  {
-    title: "The Ethnic Cleansing of Palestine",
-    author: "Ilan Pappé",
-    description:
-      "A detailed account of the forced displacement of Palestinians during the creation of Israel.",
-  },
-  {
-    title: "Palestine: Peace Not Apartheid",
-    author: "Jimmy Carter",
-    description:
-      "An examination of Israeli policies and their impact on Palestinian self-determination.",
-  },
-  {
-    title: "The Question of Palestine",
-    author: "Edward Said",
-    description:
-      "A foundational text on Palestinian identity, narrative, and resistance.",
-  },
-  {
-    title: "Gaza: A History",
-    author: "Jean-Pierre Filiu",
-    description:
-      "A comprehensive historical overview of Gaza from ancient times to the present.",
-  },
-];
+/* -------------------------
+   Component
+--------------------------*/
 
 export default function Resources() {
   const [activeTab, setActiveTab] = useState("timeline");
 
   return (
     <Layout>
-      {/* Animated Emerald Background */}
-      <div className="fixed top-0 left-0 right-0 bottom-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-bl from-emerald-700/20 via-emerald-700/5 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-emerald-700/15 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
-      </div>
-
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-background" />
-        {/* Animated decorative elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-emerald-700/30 to-transparent rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-0 right-20 w-96 h-96 bg-gradient-to-tl from-emerald-700/20 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Resources
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Learn & Understand
-          </h1>
-          <div className="w-full h-1 bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-700 mb-8 animate-fade-up delay-150 rounded-full" />
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            Education is the foundation of advocacy. Explore historical context,
-            current realities, and recommended readings to deepen your
-            understanding of Palestine.
-          </p>
-        </div>
-      </section>
-
-      {/* Tabs */}
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="bg-muted/50 p-1 rounded-xl mb-12 border border-border/50">
-              <TabsTrigger value="timeline" className="data-[state=active]:bg-background data-[state=active]:text-emerald-700 rounded-lg px-6 py-3 transition-all">
+            <TabsList className="mb-12">
+              <TabsTrigger value="timeline">
                 <Clock className="w-4 h-4 mr-2" />
                 Timeline
               </TabsTrigger>
-              <TabsTrigger value="books" className="data-[state=active]:bg-background data-[state=active]:text-emerald-700 rounded-lg px-6 py-3 transition-all">
-                <BookOpen className="w-4 h-4 mr-2" />
-                Books
-              </TabsTrigger>
             </TabsList>
 
-            {/* Timeline */}
             <TabsContent value="timeline">
               <VerticalTimeline lineColor="hsl(var(--primary))">
-                {timelineEvents.map((event, index) => (
-                  <VerticalTimelineElement
-                    key={index}
-                    date={event.year}
-                    contentStyle={{
-                      background: "hsl(var(--card))",
-                      color: "hsl(var(--foreground))",
-                      borderRadius: "1rem",
-                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                      border: "1px solid hsl(var(--border) / 0.5)",
-                    }}
-                    contentArrowStyle={{
-                      borderRight: "7px solid hsl(var(--emerald-700))",
-                    }}
-                    iconStyle={{
-                      background: "#047857",
-                      color: "#fff",
-                      boxShadow: "0 0 0 4px hsl(var(--background)), 0 0 0 8px #047857",
-                    }}
-                  >
-                    <h3 className="font-display text-lg font-semibold mb-2 text-emerald-700">
-                      {event.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {event.description}
-                    </p>
-                  </VerticalTimelineElement>
-                ))}
+                {timelineEvents.map((event, index) => {
+                  const Icon = event.icon;
+                  return (
+                    <VerticalTimelineElement
+                      key={index}
+                      date={event.year}
+                      icon={
+                        <div className=" translate-y-7 group-hover:scale-125 transition-transform duration-300">
+                          <Icon />
+                        </div>
+                      }
+                      iconStyle={{
+                        background: "#047857",
+                        color: "#fff",
+                        boxShadow:
+                          "0 0 0 4px hsl(var(--background)), 0 0 0 10px rgba(4,120,87,0.4)",
+                      }}
+                      className="group hover:shadow-2xl hover:shadow-emerald-700/30 transition-all duration-300"
+                      contentStyle={{
+                        background: "hsl(var(--card))",
+                        borderRadius: "1rem",
+                        border: "1px solid hsl(var(--border) / 0.5)",
+                      }}
+                    >
+                      <h3 className="font-display text-lg font-semibold mb-2 text-emerald-700">
+                        {event.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {event.description}
+                      </p>
+                    </VerticalTimelineElement>
+                  );
+                })}
               </VerticalTimeline>
-            </TabsContent>
-
-            {/* Books */}
-            <TabsContent value="books">
-              <div className="grid md:grid-cols-2 gap-6">
-                {bookRecommendations.map((book, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-card rounded-2xl border border-border/50 p-6 hover:shadow-xl hover:border-emerald-700/40 transition-all duration-300 flex flex-col"
-                  >
-                    <h3 className="font-display text-lg font-semibold mb-2 text-emerald-700">
-                      {book.title}
-                    </h3>
-                    <p className="text-emerald-700 text-sm font-medium mb-3">
-                      {book.author}
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed flex-grow">
-                      {book.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </TabsContent>
           </Tabs>
         </div>
