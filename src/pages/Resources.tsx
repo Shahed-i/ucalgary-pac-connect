@@ -243,6 +243,33 @@ const timelineEvents = [
   },
 ];
 
+const bookRecommendations = [
+  {
+    title: "The Ethnic Cleansing of Palestine",
+    author: "Ilan Pappé",
+    description:
+      "A detailed account of the forced displacement of Palestinians during the creation of Israel.",
+  },
+  {
+    title: "Palestine: Peace Not Apartheid",
+    author: "Jimmy Carter",
+    description:
+      "An examination of Israeli policies and their impact on Palestinian self-determination.",
+  },
+  {
+    title: "The Question of Palestine",
+    author: "Edward Said",
+    description:
+      "A foundational text on Palestinian identity, narrative, and resistance.",
+  },
+  {
+    title: "Gaza: A History",
+    author: "Jean-Pierre Filiu",
+    description:
+      "A comprehensive historical overview of Gaza from ancient times to the present.",
+  },
+];
+
 /* -------------------------
    Component
 --------------------------*/
@@ -252,16 +279,49 @@ export default function Resources() {
 
   return (
     <Layout>
+      {/* Animated Emerald Background */}
+      <div className="fixed top-0 left-0 right-0 bottom-0 pointer-events-none overflow-hidden -z-10">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-bl from-emerald-700/20 via-emerald-700/5 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-emerald-700/15 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+      </div>
+
+      {/* Hero */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-background" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-emerald-700/30 to-transparent rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 right-20 w-96 h-96 bg-gradient-to-tl from-emerald-700/20 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            Resources
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Learn & Understand
+          </h1>
+          <div className="w-full h-1 bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-700 mb-8 animate-fade-up delay-150 rounded-full" />
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            Education is the foundation of advocacy. Explore historical context,
+            current realities, and recommended readings to deepen your
+            understanding of Palestine.
+          </p>
+        </div>
+      </section>
+
+      {/* Tabs */}
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mb-12">
-              <TabsTrigger value="timeline">
+            <TabsList className="bg-muted/50 p-1 rounded-xl mb-12 border border-border/50">
+              <TabsTrigger value="timeline" className="data-[state=active]:bg-background data-[state=active]:text-emerald-700 rounded-lg px-6 py-3 transition-all">
                 <Clock className="w-4 h-4 mr-2" />
                 Timeline
               </TabsTrigger>
+              <TabsTrigger value="books" className="data-[state=active]:bg-background data-[state=active]:text-emerald-700 rounded-lg px-6 py-3 transition-all">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Books
+              </TabsTrigger>
             </TabsList>
 
+            {/* Timeline */}
             <TabsContent value="timeline">
               <VerticalTimeline lineColor="hsl(var(--primary))">
                 {timelineEvents.map((event, index) => {
@@ -281,10 +341,11 @@ export default function Resources() {
                         boxShadow:
                           "0 0 0 4px hsl(var(--background)), 0 0 0 10px rgba(4,120,87,0.4)",
                       }}
-                      className="group hover:shadow-2xl hover:shadow-emerald-700/30 transition-all duration-300"
                       contentStyle={{
                         background: "hsl(var(--card))",
+                        color: "hsl(var(--foreground))",
                         borderRadius: "1rem",
+                        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                         border: "1px solid hsl(var(--border) / 0.5)",
                       }}
                     >
@@ -298,6 +359,28 @@ export default function Resources() {
                   );
                 })}
               </VerticalTimeline>
+            </TabsContent>
+
+            {/* Books */}
+            <TabsContent value="books">
+              <div className="grid md:grid-cols-2 gap-6">
+                {bookRecommendations.map((book, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-card rounded-2xl border border-border/50 p-6 hover:shadow-xl hover:border-emerald-700/40 transition-all duration-300 flex flex-col"
+                  >
+                    <h3 className="font-display text-lg font-semibold mb-1 text-emerald-700">
+                      {book.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 font-medium">
+                      by {book.author}
+                    </p>
+                    <p className="text-muted-foreground flex-grow">
+                      {book.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </TabsContent>
           </Tabs>
         </div>
