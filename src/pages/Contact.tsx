@@ -53,18 +53,20 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-hero tatreez-pattern">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+      <section className="pt-32 pb-20 relative overflow-hidden bg-emerald-50/40">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-emerald-800/10 blur-3xl rounded-full animate-pulse-slow" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-900/5 blur-3xl rounded-full animate-pulse-slow" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="max-w-3xl animate-fade-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/10 text-emerald-900 text-sm font-medium mb-6 border border-emerald-900/20">
+              <Mail className="w-4 h-4" />
               Contact
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            </div>
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-emerald-950 mb-6">
               Get in Touch
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Have questions, ideas, or want to collaborate? We'd love to hear from you. 
-              Reach out and let's connect.
+            <p className="text-lg text-slate-700 leading-relaxed">
+              Have questions, ideas, or want to collaborate? We'd love to hear from you. Reach out and let's connect.
             </p>
           </div>
         </div>
