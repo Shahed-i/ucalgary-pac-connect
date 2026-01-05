@@ -1,4 +1,5 @@
 import { X, DollarSign, Users } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Event, categoryColors, categoryLabels } from "@/data/events";
@@ -9,6 +10,8 @@ interface EventModalProps {
 }
 
 export function EventModal({ event, onClose }: EventModalProps) {
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+
   if (!event) return null;
 
   const canRegister = !event.isPast && event.requiresRegistration;
@@ -44,13 +47,13 @@ export function EventModal({ event, onClose }: EventModalProps) {
 
             {/* Header Image */}
             {event.poster && (
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-80 overflow-hidden cursor-pointer group" onClick={() => setExpandedImage(event.poster)}>
                 <img
                   src={event.poster}
                   alt={event.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:via-black/50 transition-colors" />
 
                 <div className="absolute bottom-6 left-6 right-6">
                   <span
@@ -134,7 +137,8 @@ export function EventModal({ event, onClose }: EventModalProps) {
                     {event.gallery.map((image, idx) => (
                       <div
                         key={idx}
-                        className="group relative h-40 rounded-lg overflow-hidden"
+                        className="group relative h-40 rounded-lg overflow-hidden cursor-pointer"
+                        onClick={() => setExpandedImage(image)}
                       >
                         <img
                           src={image}
@@ -182,6 +186,34 @@ export function EventModal({ event, onClose }: EventModalProps) {
           </div>
         </div>
       </div>
+
+      {/* Image Expansion Modal */}
+      {expandedImage && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/80 z-50"
+            onClick={() => setExpandedImage(null)}
+          />
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="relative max-w-4xl max-h-[90vh]">
+              <button
+                onClick={() => setExpandedImage(null)}
+                className={cn(
+                  "absolute -top-10 right-0 p-2 rounded-full",
+                  "text-white hover:bg-white/10 transition-colors"
+                )}
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <img
+                src={expandedImage}
+                alt="Expanded view"
+                className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              />
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
