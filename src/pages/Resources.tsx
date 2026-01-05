@@ -248,31 +248,130 @@ const bookRecommendations = [
     title: "The Ethnic Cleansing of Palestine",
     author: "Ilan Pappé",
     description:
-      "A detailed account of the forced displacement of Palestinians during the creation of Israel.",
+      "For Palestinians, the foundation of the state of Israel in 1948 is known as the nakba (catastrophe), in which at least 400 Palestinain villages were destroyed, many Palestinians murdered and one million Palestinians expelled or displaced from their homes. Ilan Pappe’s groundbreaking work to recount what happened between 1947 and 1949 helps illuminate the initial injustices that remain unrepaired and continue to be replicated to this day.",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/TheEthnicCleansingofPalestine.jpg",
   },
   {
-    title: "Palestine: Peace Not Apartheid",
-    author: "Jimmy Carter",
+    title: "Decolonizing Israel, Liberating Palestine",
+    author: "Jeff Halper",
     description:
-      "An examination of Israeli policies and their impact on Palestinian self-determination.",
+      "A text which debunks myths around the ‘Israel-Palestine conflict’, asking - what if our understanding of the issue has been wrong all along? The book explores the concept of settler colonialism, providing a clearer understanding of the Zionist movement's project to establish a Jewish state in Palestine, displacing the Palestinian Arab population and marginalizing its cultural presence. ",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/DecolonizingIsraelLiberatingPalestine.jpg",
   },
   {
-    title: "The Question of Palestine",
-    author: "Edward Said",
+    title: "The Hundred Years’ war on Palestine",
+    author: "Rashid Khalidi",
     description:
-      "A foundational text on Palestinian identity, narrative, and resistance.",
+      "A book which approaches the 20th century as a century of denial for Palestinians: denial of statehood, denial of nationhood and denial of history. Drawing on his family archives, Khalidi reclaims the fundamental right of any people: to narrate their history on their own terms. This text will help you understand the early context of the Zionist project; and moves through critical moments within a hundred year long war of occupation, dispossession and colonization.",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/HundredYearswar.jpg",
   },
   {
-    title: "Gaza: A History",
-    author: "Jean-Pierre Filiu",
+    title: "Ten Myths About Israel",
+    author: "Ilan Pappe",
     description:
-      "A comprehensive historical overview of Gaza from ancient times to the present.",
+      "A book exploring ‘ten myths’ that are repeated endlessly in the media, upheld by the military and accepted by the world’s governments - reinforcing the regional status quo in Palestine. Pappe explores various claims - that Palestine was empty, that Palestinians voluntarily left their homeland - and breaks down what lies behind the mythology.",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/TenMythsAboutIsrael.jpg",
+  },
+  {
+    title: "State of Siege",
+    author: "Mahmoud Darwish",
+    description:
+      "Written from Ramallah in 2002, this epic poem from Palestine’s poet laureate, explores the tragedy and injustice of a life of occupation.",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/StateofSiege.jpg",
+  },
+  {
+    title: "Return, A Palestinian Memoir",
+    author: "Ghada Karmi",
+    description:
+      "Ghada Karmi, raised in Britain after her family was exiled from Palestine, revisits the now highly militarized and largely unrecognisable land she had not seen since childhood. Arriving to find her home and much of the land she once knew, occupied by strangers, she explores the possibility of return for Palestinians in exile.",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/Return.jpg",
+  },
+    {
+    title: "Morning in Jenin",
+    author: "Susan Abulhawa",
+    description:
+      "A novel set in Palestine in 1948, told through the eyes of a young girl as she and her family are expelled from their home in Ein Hod, to a refugee camp.",
+    color: "from-red-100 via-red-50 to-emerald-100",
+    accentColor: "from-red-300 via-red-200 to-emerald-300",
+    coverImage: "/images/books/MorningsinJenin.jpg",
   },
 ];
 
 /* -------------------------
    Component
 --------------------------*/
+
+const BookCard = ({ book }) => {
+  return (
+    <div className="h-auto cursor-pointer" style={{ perspective: "1000px" }}>
+      <div
+        className="relative w-full transition-transform duration-500"
+        style={{
+          width: "340px",
+          height: "510px",
+          transformStyle: "preserve-3d",
+          transform: "rotateY(0deg)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "rotateY(180deg)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "rotateY(0deg)";
+        }}
+      >
+        {/* Front of book - Book Cover */}
+        <div
+          className="absolute w-full h-full rounded-lg shadow-xl overflow-hidden border-8 border-white/40 bg-white/10"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <img
+            src={book.coverImage}
+            alt={book.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-3 right-3 text-white text-xs font-medium bg-black/30 px-3 py-1 rounded-full backdrop-blur">
+            Hover →
+          </div>
+        </div>
+
+        {/* Back of book - Description */}
+        <div
+          className={`absolute w-full h-full rounded-lg bg-gradient-to-br ${book.color} shadow-xl border-8 border-white/40 p-5 flex flex-col justify-between overflow-hidden`}
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+        >
+          <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${book.accentColor} rounded-full blur-3xl opacity-30`} />
+          <div className={`absolute -bottom-16 -left-16 w-32 h-32 bg-gradient-to-tr ${book.accentColor} rounded-full blur-3xl opacity-20`} />
+
+          <div className="relative z-10">
+            <h3 className="font-display text-base font-bold text-slate-800 mb-2 leading-tight">
+              {book.title}
+            </h3>
+            <p className="text-slate-600 text-xs font-semibold uppercase tracking-wide mb-4 opacity-70">
+              {book.author}
+            </p>
+            <p className="text-slate-700 text-sm leading-relaxed">
+              {book.description}
+            </p>
+          </div>
+
+          <div className="text-slate-500 text-xs font-medium">← Back</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Resources() {
   const [activeTab, setActiveTab] = useState("timeline");
@@ -363,22 +462,9 @@ export default function Resources() {
 
             {/* Books */}
             <TabsContent value="books">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex flex-wrap justify-center gap-8">
                 {bookRecommendations.map((book, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-card rounded-2xl border border-border/50 p-6 hover:shadow-xl hover:border-emerald-700/40 transition-all duration-300 flex flex-col"
-                  >
-                    <h3 className="font-display text-lg font-semibold mb-1 text-emerald-700">
-                      {book.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4 font-medium">
-                      by {book.author}
-                    </p>
-                    <p className="text-muted-foreground flex-grow">
-                      {book.description}
-                    </p>
-                  </div>
+                  <BookCard key={idx} book={book} />
                 ))}
               </div>
             </TabsContent>
