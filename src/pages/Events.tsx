@@ -71,14 +71,14 @@ export default function Events() {
                 />
 
                 {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/70 via-emerald-800/40 to-emerald-700/10" />
 
                 {/* Symbolic texture overlay */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.15),transparent_40%)]" />
 
                 {/* Content */}
                 <div className="relative z-10 h-full p-10 flex flex-col justify-end">
-                  <div className="mb-auto text-emerald-400 text-4xl font-display opacity-70">
+                  <div className="mb-auto text-white/60 text-4xl font-display opacity-70">
                     {campus.symbol}
                   </div>
 
@@ -90,7 +90,7 @@ export default function Events() {
                     {campus.name}
                   </h2>
 
-                  <p className="text-emerald-300 font-medium mb-4">
+                  <p className="text-white/80 font-medium mb-4">
                     {campus.fullName}
                   </p>
 
@@ -98,7 +98,7 @@ export default function Events() {
                     {campus.description}
                   </p>
 
-                  <div className="flex items-center gap-3 text-emerald-300 font-bold text-lg">
+                  <div className="flex items-center gap-3 text-white font-bold text-lg">
                     Enter Chapter
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </div>
