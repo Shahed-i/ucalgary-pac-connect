@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Heart, Shield, ExternalLink, AlertCircle } from "lucide-react";
+import { Heart, Shield, ExternalLink, AlertCircle, Users, BookOpen, Megaphone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const donationOptions = [
@@ -34,31 +34,20 @@ export default function Donate() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-hero tatreez-pattern relative overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      <section className="pt-32 pb-20 relative overflow-hidden bg-emerald-50/40">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-emerald-800/10 blur-3xl rounded-full animate-pulse-slow" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-900/5 blur-3xl rounded-full animate-pulse-slow" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+          <div className="max-w-3xl animate-fade-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 border border-accent/20">
+              <Heart className="w-4 h-4" />
               Support the Cause
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            </div>
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-emerald-950 mb-6">
               Your Generosity Makes a Difference
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Support humanitarian relief efforts and help provide essential aid to 
-              Palestinians in need. Every contribution counts.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Banner */}
-      <section className="py-8 bg-secondary/50 border-y border-border/50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-center gap-3 text-center">
-            <Shield className="w-5 h-5 text-primary" />
-            <p className="text-sm text-muted-foreground">
-              We only recommend verified, reputable humanitarian organizations with transparent operations.
+            <p className="text-lg text-slate-700 leading-relaxed">
+              Support humanitarian relief efforts and help provide essential aid to Palestinians in need. Every contribution counts.
             </p>
           </div>
         </div>
@@ -67,7 +56,7 @@ export default function Donate() {
       {/* Donation Options */}
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div>
             <div className="text-center mb-12">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Trusted Organizations
@@ -78,7 +67,7 @@ export default function Donate() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {donationOptions.map((org, index) => (
                 <a
                   key={org.name}
@@ -116,62 +105,67 @@ export default function Donate() {
               ))}
             </div>
 
-            {/* Disclaimer */}
-            <div className="mt-12 p-6 bg-muted/50 rounded-xl border border-border/50">
-              <div className="flex gap-4">
-                <AlertCircle className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-                <div className="text-sm text-muted-foreground">
-                  <p className="mb-2">
-                    <strong className="text-foreground">Please Note:</strong> The Palestine 
-                    Advocacy Club does not directly collect donations. All donations are made 
-                    directly to the organizations listed above through their official websites.
-                  </p>
-                  <p>
-                    We encourage you to research each organization and choose one that aligns 
-                    with your values. Tax receipts and donation policies vary by organization.
-                  </p>
-                </div>
-              </div>
+            {/* PAC Direct Donation */}
+            <div className="mt-16 text-center bg-emerald-50/60 border border-emerald-900/10 rounded-2xl p-8 max-w-3xl mx-auto animate-fade-up">
+              <h3 className="font-display text-2xl font-bold text-emerald-900 mb-3">
+                Want to donate to PAC?
+              </h3>
+              <p className="text-lg text-emerald-950 mb-2">
+                You can e-transfer your support directly to our club at
+                <span className="font-semibold text-primary ml-1">pac.ucalgary@gmail.com</span>.
+              </p>
+              <p className="text-base text-emerald-900/80">
+                100% of your donation goes towards running new events, educational initiatives, and advocacy efforts for the campus community.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Other Ways to Help */}
-      <section className="py-16 bg-secondary/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+      <section className="py-16 bg-gradient-to-br from-emerald-50/60 to-accent/10 relative overflow-hidden">
+        <div className="absolute -top-20 -left-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl opacity-40 animate-float" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl opacity-30 animate-float delay-300" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-emerald-900 mb-4 flex items-center justify-center gap-2 animate-fade-up">
+              <Megaphone className="w-7 h-7 text-primary animate-bounce" />
               Other Ways to Help
             </h2>
-            <p className="text-muted-foreground mb-8">
-              Financial contributions aren't the only way to make a difference. 
-              Consider these alternatives:
+            <p className="text-lg text-emerald-950 mb-10 animate-fade-up delay-100">
+              Financial contributions aren't the only way to make a difference. Consider these alternatives:
             </p>
-            
-            <div className="grid sm:grid-cols-3 gap-6 text-left">
-              <div className="bg-card rounded-xl p-6 border border-border/50">
-                <h3 className="font-semibold text-foreground mb-2">Volunteer</h3>
-                <p className="text-sm text-muted-foreground">
+            <div className="grid sm:grid-cols-3 gap-8 text-left animate-fade-up delay-200">
+              <div className="group bg-white/80 rounded-2xl border border-emerald-200 shadow-md p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:bg-primary/10">
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 mb-4 group-hover:scale-110 transition-transform">
+                  <Users className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold text-emerald-900 mb-2 text-lg">Volunteer</h3>
+                <p className="text-sm text-emerald-900/80">
                   Help organize events, spread awareness, or contribute your skills.
                 </p>
               </div>
-              <div className="bg-card rounded-xl p-6 border border-border/50">
-                <h3 className="font-semibold text-foreground mb-2">Educate</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="group bg-white/80 rounded-2xl border border-emerald-200 shadow-md p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:bg-primary/10">
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 mb-4 group-hover:scale-110 transition-transform">
+                  <BookOpen className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold text-emerald-900 mb-2 text-lg">Educate</h3>
+                <p className="text-sm text-emerald-900/80">
                   Share information with friends and family. Knowledge is powerful.
                 </p>
               </div>
-              <div className="bg-card rounded-xl p-6 border border-border/50">
-                <h3 className="font-semibold text-foreground mb-2">Advocate</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="group bg-white/80 rounded-2xl border border-emerald-200 shadow-md p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:bg-primary/10">
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 mb-4 group-hover:scale-110 transition-transform">
+                  <Megaphone className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold text-emerald-900 mb-2 text-lg">Advocate</h3>
+                <p className="text-sm text-emerald-900/80">
                   Contact your representatives and advocate for humanitarian policies.
                 </p>
               </div>
             </div>
-
-            <div className="mt-10">
-              <Button asChild size="lg">
+            <div className="mt-12 animate-fade-up delay-300">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 btn-press hover:scale-105 transition-all">
                 <Link to="/join">Join Our Club</Link>
               </Button>
             </div>
