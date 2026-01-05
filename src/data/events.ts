@@ -129,7 +129,7 @@ export const ucalgaryEvents: Event[] = [
     price: "20",
     isPast: true,
     poster: "/images/events/goals4gaza.png",
-    gallery: [],
+    gallery: ["/images/events/goals4gaza1.jpg"],
     requiresRegistration: false,
   },
   {
@@ -159,7 +159,7 @@ export const ucalgaryEvents: Event[] = [
     price: "Free",
     isPast: true,
     poster: "/images/events/walkthroughnakba.png",
-    gallery: [],
+    gallery: ["/images/events/walkthroughnakba1.jpg", "/images/events/walkthroughnakba2.jpg"],
     requiresRegistration: false,
   },
   {
@@ -204,7 +204,7 @@ export const ucalgaryEvents: Event[] = [
     price: "Free",
     isPast: true,
     poster: "/images/events/strengthundersiege.png",
-    gallery: [],
+    gallery: ["/images/events/strengthundersiege1.png", "/images/events/strengthundersiege2.png", "/images/events/strengthundersiege3.png", "/images/events/strengthundersiege4.png"],
     requiresRegistration: false,
   },
   {

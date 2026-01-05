@@ -110,19 +110,30 @@ const bookRecommendations = [
 ];
 
 export default function Resources() {
-  const [activeTab, setActiveTab] = useState("current");
+  const [activeTab, setActiveTab] = useState("timeline");
 
   return (
     <Layout>
+      {/* Animated Emerald Background */}
+      <div className="fixed top-0 left-0 right-0 bottom-0 pointer-events-none overflow-hidden -z-10">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-bl from-emerald-700/20 via-emerald-700/5 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-tr from-emerald-700/15 to-transparent rounded-full blur-3xl animate-pulse delay-700" />
+      </div>
+
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-hero tatreez-pattern">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-background" />
+        {/* Animated decorative elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-emerald-700/30 to-transparent rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 right-20 w-96 h-96 bg-gradient-to-tl from-emerald-700/20 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             Resources
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Learn & Understand
           </h1>
+          <div className="w-full h-1 bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-700 mb-8 animate-fade-up delay-150 rounded-full" />
           <p className="text-lg text-muted-foreground max-w-2xl">
             Education is the foundation of advocacy. Explore historical context,
             current realities, and recommended readings to deepen your
@@ -135,39 +146,16 @@ export default function Resources() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="bg-muted/50 p-1 rounded-xl mb-12">
-              <TabsTrigger value="current">
-                <Globe className="w-4 h-4 mr-2" />
-                Current Affairs
-              </TabsTrigger>
-              <TabsTrigger value="timeline">
+            <TabsList className="bg-muted/50 p-1 rounded-xl mb-12 border border-border/50">
+              <TabsTrigger value="timeline" className="data-[state=active]:bg-background data-[state=active]:text-emerald-700 rounded-lg px-6 py-3 transition-all">
                 <Clock className="w-4 h-4 mr-2" />
                 Timeline
               </TabsTrigger>
-              <TabsTrigger value="books">
+              <TabsTrigger value="books" className="data-[state=active]:bg-background data-[state=active]:text-emerald-700 rounded-lg px-6 py-3 transition-all">
                 <BookOpen className="w-4 h-4 mr-2" />
                 Books
               </TabsTrigger>
             </TabsList>
-
-            {/* Current Affairs */}
-            <TabsContent value="current">
-              <div className="grid md:grid-cols-2 gap-6">
-                {currentContent.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-card rounded-xl border border-border/50 p-6 hover-lift"
-                  >
-                    <h3 className="font-display text-lg font-semibold mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {item.content}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </TabsContent>
 
             {/* Timeline */}
             <TabsContent value="timeline">
@@ -180,18 +168,19 @@ export default function Resources() {
                       background: "hsl(var(--card))",
                       color: "hsl(var(--foreground))",
                       borderRadius: "1rem",
-                      boxShadow: "none",
-                      border: "1px solid hsl(var(--border))",
+                      boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+                      border: "1px solid hsl(var(--border) / 0.5)",
                     }}
                     contentArrowStyle={{
-                      borderRight: "7px solid hsl(var(--border))",
+                      borderRight: "7px solid hsl(var(--emerald-700))",
                     }}
                     iconStyle={{
-                      background: "hsl(var(--primary))",
+                      background: "#047857",
                       color: "#fff",
+                      boxShadow: "0 0 0 4px hsl(var(--background)), 0 0 0 8px #047857",
                     }}
                   >
-                    <h3 className="font-display text-lg font-semibold mb-2">
+                    <h3 className="font-display text-lg font-semibold mb-2 text-emerald-700">
                       {event.title}
                     </h3>
                     <p className="text-muted-foreground">
@@ -208,15 +197,15 @@ export default function Resources() {
                 {bookRecommendations.map((book, idx) => (
                   <div
                     key={idx}
-                    className="bg-card rounded-xl border border-border/50 p-6 hover-lift"
+                    className="bg-card rounded-2xl border border-border/50 p-6 hover:shadow-xl hover:border-emerald-700/40 transition-all duration-300 flex flex-col"
                   >
-                    <h3 className="font-display text-lg font-semibold mb-1">
+                    <h3 className="font-display text-lg font-semibold mb-2 text-emerald-700">
                       {book.title}
                     </h3>
-                    <p className="text-primary text-sm font-medium mb-3">
+                    <p className="text-emerald-700 text-sm font-medium mb-3">
                       {book.author}
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground leading-relaxed flex-grow">
                       {book.description}
                     </p>
                   </div>
