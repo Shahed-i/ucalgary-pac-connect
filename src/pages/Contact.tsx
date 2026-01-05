@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,16 +15,39 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
+
+    const form = e.currentTarget;
+
+    const templateParams = {
+      name: form.name.value,
+      title: form.subject.value,
+      message: form.message.value,
+      time: new Date().toLocaleString(),
+    };
+
+    try {
+      await emailjs.send(
+        "service_5d0oi0w",
+        "template_585j3il",
+        templateParams,
+        "ho44ZeKW7uaX0fVLN"
+      );
+
+      setIsSubmitted(true);
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or reach out via Instagram.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -70,10 +94,10 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
                     <a 
-                      href="mailto:pac@ucalgary.ca" 
+                      href="mailto:pac.ucalgary@gmail.com" 
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      pac@ucalgary.ca
+                      pac.ucalgary@gmail.com
                     </a>
                   </div>
                 </div>
@@ -100,7 +124,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-foreground mb-1">Social Media</h3>
                     <div className="flex items-center gap-4">
                       <a 
-                        href="https://instagram.com/pacucalgary" 
+                        href="https://www.instagram.com/pacucalgary/" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
@@ -108,7 +132,7 @@ export default function Contact() {
                         Instagram <ExternalLink className="w-3 h-3" />
                       </a>
                       <a 
-                        href="https://linktr.ee/pacucalgary" 
+                        href="https://linktr.ee/pac.ucalgary" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
@@ -120,12 +144,10 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Office Hours */}
               <div className="p-6 bg-secondary/50 rounded-xl">
                 <h3 className="font-semibold text-foreground mb-3">Response Time</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  We typically respond to emails within 24-48 hours during the academic 
-                  semester. For urgent matters, please reach out via Instagram DM.
+                  We typically respond within 24–48 hours during the academic semester.
                 </p>
               </div>
             </div>
@@ -143,83 +165,19 @@ export default function Contact() {
                   <p className="text-muted-foreground mb-6">
                     Thank you for reaching out. We'll get back to you soon.
                   </p>
-                  <Button 
-                    variant="outline" 
-                    onClick={() => setIsSubmitted(false)}
-                  >
+                  <Button variant="outline" onClick={() => setIsSubmitted(false)}>
                     Send Another Message
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                      Name
-                    </label>
-                    <Input 
-                      id="name" 
-                      name="name" 
-                      required 
-                      placeholder="Your name"
-                      className="bg-background"
-                    />
-                  </div>
+                  <Input id="name" name="name" required placeholder="Your name" />
+                  <Input id="email" name="email" type="email" required placeholder="your.email@ucalgary.ca" />
+                  <Input id="subject" name="subject" required placeholder="What is this regarding?" />
+                  <Textarea id="message" name="message" required rows={5} placeholder="Your message..." />
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email
-                    </label>
-                    <Input 
-                      id="email" 
-                      name="email" 
-                      type="email" 
-                      required 
-                      placeholder="your.email@ucalgary.ca"
-                      className="bg-background"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                      Subject
-                    </label>
-                    <Input 
-                      id="subject" 
-                      name="subject" 
-                      required 
-                      placeholder="What is this regarding?"
-                      className="bg-background"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message
-                    </label>
-                    <Textarea 
-                      id="message" 
-                      name="message" 
-                      required 
-                      rows={5}
-                      placeholder="Your message..."
-                      className="bg-background resize-none"
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    className="w-full" 
-                    size="lg"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="w-4 h-4 ml-2" />
-                      </>
-                    )}
+                  <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : <>Send Message <Send className="w-4 h-4 ml-2" /></>}
                   </Button>
                 </form>
               )}
