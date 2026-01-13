@@ -6,7 +6,7 @@ const footerLinks = {
     { name: "Home", path: "/" },
     { name: "Events", path: "/events" },
     { name: "Resources", path: "/resources" },
-    { name: "Statements", path: "/statements" },
+    // { name: "Statements", path: "/statements" },
   ],
   connect: [
     { name: "Join Us", path: "/join" },

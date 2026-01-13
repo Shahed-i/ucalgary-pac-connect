@@ -9,7 +9,7 @@ import UCalgaryEvents from "./pages/events/UCalgaryEvents";
 import MRUEvents from "./pages/events/MRUEvents";
 import Resources from "./pages/Resources";
 import Join from "./pages/Join";
-import Statements from "./pages/Statements";
+// import Statements from "./pages/Statements";
 import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
 import NotFound from "./pages/NotFound";
@@ -29,7 +29,7 @@ const App = () => (
           <Route path="/events/mru" element={<MRUEvents />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/join" element={<Join />} />
-          <Route path="/statements" element={<Statements />} />
+          {/* <Route path="/statements" element={<Statements />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="*" element={<NotFound />} />
