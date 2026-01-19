@@ -34,7 +34,7 @@ const navLinks: NavLink[] = [
       { name: "Books", path: "/resources#books" },
     ],
   },
-  { name: "Statements", path: "/statements" },
+  // { name: "Statements", path: "/statements" },
   { name: "Join Us", path: "/join" },
   { name: "Contact", path: "/contact" },
 ];
