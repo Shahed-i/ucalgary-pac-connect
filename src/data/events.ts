@@ -298,6 +298,22 @@ export const ucalgaryEvents: Event[] = [
     requiresRegistration: true,
     registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSeL2u8Zb6p4JXZ3OFpLncavk_JrWoLrmhPuKavg47MSa0Us3g/viewform",
   },
+  {
+    id: "uc-17",
+    title: "Sisters Tatreez Night",
+    date: "February 6th, 2026",
+    time: "4:30PM",
+    location: "HNSC 330",
+    description: "An evening celebrating Palestinian culture through tatreez, storytelling, and community. Come connect, create, and honor a timeless tradition.",
+    category: "cultural",
+    collaborators: ["PAC", "MEC", "MOSAIC"],
+    price: "15",
+    isPast: false,
+    poster: "/images/events/tatreeznight26.jpeg",
+    gallery: [],
+    requiresRegistration: true,
+    registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfHtHneOK8Gm47HCNbmqPYRvMuzmuFw9G71nn4Uw6S0doZ-eg/viewform?usp=sharing&ouid=113436390706788978376",
+  },
 ];
 
 export const mruEvents: Event[] = [
