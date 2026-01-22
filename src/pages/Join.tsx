@@ -12,32 +12,76 @@ import {
   Globe,
   Coffee,
   BookOpen,
+  Music2 as TikTok,
 } from "lucide-react";
 
-const socialLinks = [
+const ucalgarySocialLinks = [
   {
     name: "Instagram",
     description: "Follow us for updates, event announcements, and educational content.",
     icon: Instagram,
     url: "https://www.instagram.com/pacucalgary/",
     color: "from-purple-500 via-pink-500 to-orange-500",
-    followers: "5K+",
+    followers: "",
+  },
+  {
+    name: "TikTok",
+    description: "Watch and share our latest videos and advocacy content.",
+    icon: TikTok,
+    url: "https://www.tiktok.com/@pac.uofc?_r=1&_t=ZS-93HDv9Lp4dw",
+    color: "from-black via-fuchsia-600 to-cyan-400",
+    followers: null,
   },
   {
     name: "Linktree",
     description: "All our important links in one place. Quick access to everything PAC.",
     icon: ExternalLink,
-    url: "https://l.instagram.com/?u=https%3A%2F%2Flinktr.ee%2Fpac.ucalgary%3Futm_source%3Dlinktree_admin_share%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnrXxsTTtcui2ZhTnZ_8I9YmfFJCS48s8Z5RX04j2F_YGW7ALN_oY7pGFscZs_aem_0U6VBaI6ysLlLD8mVWRYJA&e=AT11lNXlEOiExQXXFk8tmUzDVGOQDVwfQD8qiTgGVl-VqEiK1wKAEgVf-DE94N0a5WU9k74VoKorAjjoRGPye_xwG_pbDx81w_feV4d3zHhseLAynUNgTF40QA",
+    url: "https://linktr.ee/pac.ucalgary",
     color: "from-emerald-900 to-emerald-800",
     followers: null,
   },
   {
     name: "WhatsApp",
-    description: "Join our community group for real-time updates and discussions.",
+    description: "Join our UCalgary community group for real-time updates and discussions.",
     icon: MessageCircle,
     url: "https://chat.whatsapp.com/JP5yTyf4qfMKsnAgMvIV50",
     color: "from-green-800 to-green-700",
-    followers: "300+",
+    followers: "",
+  },
+];
+
+const mruSocialLinks = [
+  {
+    name: "Instagram",
+    description: "Follow MRU PAC for updates and events.",
+    icon: Instagram,
+    url: "https://www.instagram.com/pacmru/",
+    color: "from-[#7c1c2a] via-[#a8324a] to-[#c1445a]",
+    followers: null,
+  },
+  {
+    name: "TikTok",
+    description: "Watch and share our latest videos and advocacy content.",
+    icon: TikTok,
+    url: "https://www.tiktok.com/@pac.mru?_r=1&_t=ZS-93HDwUxp4NQ",
+    color: "from-black via-[#a8324a] to-[#c1445a]",
+    followers: null,
+  },
+  {
+    name: "Linktree",
+    description: "All MRU PAC links in one place.",
+    icon: ExternalLink,
+    url: "https://l.instagram.com/?u=https%3A%2F%2Flinktr.ee%2FPalestineMRU%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnDhS5I26fkwECeXT120JzodsrTIcqdknVJ78TO_VPpgSr58vM3tU31EGKKus_aem_1TKUV_ZExyk8ZAvAgs0yaw&e=AT3ct8O3eAAD45k9F2X-hI3ry6W-zYBcBFHCV6H_pUBXo6J57q2t7nHNAGXQwpuEOLl0l9_Wc4rB6aygI6bB2UPq6mBUSvxWUwpFf9scuRyqB1Glq236RPrxrw",
+    color: "from-[#a8324a] to-[#7c1c2a]",
+    followers: null,
+  },
+  {
+    name: "WhatsApp",
+    description: "Join our MRU community group for real-time updates and discussions.",
+    icon: MessageCircle,
+    url: "https://chat.whatsapp.com/CH4Za2oNDUHKoHi1BsYqp1",
+    color: "from-[#7c1c2a] to-[#a8324a]",
+    followers: null,
   },
 ];
 
@@ -145,51 +189,106 @@ export default function Join() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {socialLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative bg-emerald-50/60 rounded-2xl border border-emerald-900/10 p-8
-                  transition-all duration-300
-                  hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-900/20
-                  animate-scale-pop"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${link.color}
-                    flex items-center justify-center mb-6
+          {/* UCalgary Socials */}
+          <div className="mb-16">
+            <h3 className="font-display text-2xl font-bold text-emerald-900 mb-6 text-center">UCalgary</h3>
+            <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {ucalgarySocialLinks.map((link, index) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative bg-emerald-50/60 rounded-2xl border border-emerald-900 p-8
                     transition-all duration-300
-                    group-hover:scale-125 group-hover:shadow-xl`}>
-                    <link.icon className="w-8 h-8 text-white" />
-                  </div>
+                    hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-900/20
+                    animate-scale-pop"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                  <h3 className="font-display text-2xl font-bold text-emerald-950 mb-3">
-                    {link.name}
-                  </h3>
-
-                  <p className="text-slate-700 mb-4 leading-relaxed">
-                    {link.description}
-                  </p>
-
-                  {link.followers && (
-                    <div className="flex items-center gap-2 text-emerald-900 font-semibold">
-                      <Coffee className="w-4 h-4" />
-                      <span>{link.followers} community members</span>
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${link.color}
+                      flex items-center justify-center mb-6
+                      transition-all duration-300
+                      group-hover:scale-125 group-hover:shadow-xl`}>
+                      <link.icon className="w-8 h-8 text-white" />
                     </div>
-                  )}
 
-                  <div className="mt-4 flex items-center gap-2 text-emerald-900 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>Visit</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <h3 className="font-display text-2xl font-bold text-emerald-950 mb-3">
+                      {link.name}
+                    </h3>
+
+                    <p className="text-slate-700 mb-4 leading-relaxed">
+                      {link.description}
+                    </p>
+
+                    {link.followers && (
+                      <div className="flex items-center gap-2 text-emerald-900 font-semibold">
+                        <Coffee className="w-4 h-4" />
+                        <span>{link.followers} community members</span>
+                      </div>
+                    )}
+
+                    <div className="mt-4 flex items-center gap-2 text-emerald-900 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span>Visit</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* MRU Socials */}
+          <div>
+            <h3 className="font-display text-2xl font-bold text-center" style={{ color: '#7c1c2a' }}>MRU</h3>
+            <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              {mruSocialLinks.map((link, index) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative rounded-2xl border p-8 bg-[#f8eaea] border-[#c1445a]
+                    transition-all duration-300
+                    hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#c1445a]/30
+                    animate-scale-pop"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#c1445a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${link.color}
+                      flex items-center justify-center mb-6
+                      transition-all duration-300
+                      group-hover:scale-125 group-hover:shadow-xl`}>
+                      <link.icon className="w-8 h-8 text-white" />
+                    </div>
+
+                    <h3 className="font-display text-2xl font-bold" style={{ color: '#7c1c2a' }}>
+                      {link.name}
+                    </h3>
+
+                    <p className="mb-4 leading-relaxed" style={{ color: '#7c1c2a' }}>
+                      {link.description}
+                    </p>
+
+                    {link.followers && (
+                      <div className="flex items-center gap-2 font-semibold" style={{ color: '#7c1c2a' }}>
+                        <Coffee className="w-4 h-4" />
+                        <span>{link.followers} community members</span>
+                      </div>
+                    )}
+
+                    <div className="mt-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: '#7c1c2a' }}>
+                      <span>Visit</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
